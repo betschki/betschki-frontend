@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "reactstrap";
@@ -27,6 +28,10 @@ export default function Home() {
 
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Jannis Fedoruk-Betschki | Junior Developer</title>
+      </Helmet>
       <Container className="text-center frontpage-header">
         <Row>
           <Col>
