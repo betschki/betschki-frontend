@@ -1,11 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Col } from "reactstrap";
-import "./index.css";
+import "../styles/common.css";
 import { StaticImage } from "gatsby-plugin-image";
 import ReactHtmlParser from "react-html-parser";
+import { Row, Container, Col } from "../components/structure";
+import { H1, H2 } from "../components/headings";
+import { Center } from "../components/common";
+import Layout from "../components/layout";
+import { PageContent } from "../components/PageContent";
 
 export default function Home() {
   const data = useStaticQuery(graphql`
@@ -28,30 +31,29 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Jannis Fedoruk-Betschki | Junior Developer</title>
-      </Helmet>
-      <Container className="text-center frontpage-header">
-        <Row>
-          <Col>
-            <div className="mt-3">
-              <StaticImage
-                src="../images/jannis.jpeg"
-                alt="Jannis Fedoruk-Betschki"
-                height={300}
-                className="image-circle"
-              />
-            </div>
-            <div className="frontpage-heading-wrapper">
-              <h1 className="mt-4 frontpage-heading-h1">{heading}</h1>
-              <h2 className="frontpage-heading-h1">{subheading}</h2>
-            </div>
-            <div className="frontpage-content">{ReactHtmlParser(content)}</div>
-          </Col>
-        </Row>
-      </Container>
-      {/* <div className="frontpage-meta">
+      <Layout>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Jannis Fedoruk-Betschki | Junior Developer</title>
+        </Helmet>
+        <Container className="text-center frontpage-header">
+          <Center>
+            <Row>
+              <Col>
+                <StaticImage
+                  src="../images/jannis.jpeg"
+                  alt="Jannis Fedoruk-Betschki"
+                  height={300}
+                  className="image-circle"
+                />
+                <H1>{heading}</H1>
+                <H2>{subheading}</H2>
+                <PageContent>{ReactHtmlParser(content)}</PageContent>
+              </Col>
+            </Row>
+          </Center>
+        </Container>
+        {/* <div className="frontpage-meta">
         <Container className="text-center">
           <Row>
             <Col>
@@ -76,13 +78,16 @@ export default function Home() {
           </Row>
         </Container>
       </div> */}
-      <footer className="text-center">
-        <p>
-          This small website has been created using GatsbyJS for the frontend
-          and NestJS for the backend. Have a look at{" "}
-          <a href="https://github.com/betschki">GitHub</a> how I did it.
-        </p>
-      </footer>
+        <footer className="text-center">
+          <Center>
+            <p>
+              This small website has been created using GatsbyJS for the
+              frontend and NestJS for the backend. Have a look at{" "}
+              <a href="https://github.com/betschki">GitHub</a> how I did it.
+            </p>
+          </Center>
+        </footer>
+      </Layout>
     </>
   );
 }

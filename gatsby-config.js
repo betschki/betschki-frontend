@@ -11,6 +11,7 @@ module.exports = {
     "gatsby-plugin-sitemap",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -35,6 +36,22 @@ module.exports = {
       resolve: "gatsby-plugin-plausible",
       options: {
         domain: process.env.PUBLIC_URL,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-pdf",
+      options: {
+        paths: ["/cv/"],
+        outputPath: "/public/pdf",
+        allPages: false,
+        pdfOptions: {
+          margin: {
+            top: "1.9cm",
+            bottom: "3.67cm",
+            left: "1.9cm",
+            right: "1.32cm",
+          },
+        },
       },
     },
   ],
