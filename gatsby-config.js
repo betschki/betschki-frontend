@@ -31,5 +31,11 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: "gatsby-plugin-plausible",
+      options: {
+        domain: "www.betschki.com",
+      },
+    },
   ],
 };
