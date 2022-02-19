@@ -34,7 +34,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-plausible",
       options: {
-        domain: "www.betschki.com",
+        domain: process.env.PUBLIC_URL,
       },
     },
   ],
