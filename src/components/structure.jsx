@@ -11,15 +11,17 @@ const StyledContainer = styled.div`
 `;
 
 export function Row(props) {
-  return <div className="row">{props.children}</div>;
+  return <div className={`row ${props.className}`}>{props.children}</div>;
 }
 
 export function Container(props) {
   return (
-    <StyledContainer className="container">{props.children}</StyledContainer>
+    <StyledContainer className={`container ${props.className}`}>
+      {props.children}
+    </StyledContainer>
   );
 }
 
 export function Col(props) {
-  return <div className="col">{props.children}</div>;
+  return <div className={`col ${props.className}`}>{props.children}</div>;
 }

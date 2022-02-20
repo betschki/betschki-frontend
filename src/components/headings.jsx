@@ -2,12 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledH1 = styled.h1`
-  font-family: "Noto Serif", serif;
-  font-size: 24pt;
+  font-size: 32pt;
+  font-weight: 700;
+  margin: 0;
+  line-height: normal;
 `;
 
 const StyledH2 = styled.h2`
+  font-weight: 300;
   font-size: 20pt;
+  margin: 0;
+  line-height: normal;
 `;
 
 export function H1(props) {

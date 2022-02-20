@@ -6,12 +6,12 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
-    "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -19,18 +19,6 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
-    },
-    {
-      resolve: "gatsby-source-multi-api",
-      options: {
-        apis: [
-          {
-            prefix: "Backend",
-            baseUrl: process.env.BACKEND_URL,
-            endpoints: ["content", "contact", "education", "employment"],
-          },
-        ],
-      },
     },
     {
       resolve: "gatsby-plugin-plausible",
@@ -45,12 +33,75 @@ module.exports = {
         outputPath: "/public/pdf",
         allPages: false,
         pdfOptions: {
-          margin: {
-            top: "1.9cm",
-            bottom: "3.67cm",
-            left: "1.9cm",
-            right: "1.32cm",
-          },
+          height: "29.7cm",
+          width: "21cm",
+          pageRanges: "1",
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://api.betschki.com/education",
+        rootKey: "education",
+        schemas: {
+          education: `
+            id: Int
+            school: String
+            degree: String
+            description: String
+            startDate: String
+            endDate: String
+            tags: [String]
+          `,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://api.betschki.com/employment",
+        rootKey: "employment",
+        schemas: {
+          employment: `
+            id: Int
+            company: String
+            position: String
+            description: String
+            startDate: String
+            endDate: String
+            tags: [String]
+          `,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://api.betschki.com/contact",
+        rootKey: "contact",
+        schemas: {
+          contact: `
+            firstname: String
+            surname: String
+            city: String
+            country: String
+            email: String
+          `,
+        },
+      },
+    },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://api.betschki.com/content",
+        rootKey: "content",
+        schemas: {
+          content: `
+            heading: String
+            subheading: String
+            content: String
+          `,
         },
       },
     },
